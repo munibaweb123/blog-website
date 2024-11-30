@@ -10,27 +10,33 @@ import { notFound } from "next/navigation"
 import rehypePrettyCode from "rehype-pretty-code"
 import { transformerCopyButton } from '@rehype-pretty/transformers'
 
+// Define the type for the props
 interface PageProps {
-  params: {
+  params: Promise<{
     slug: string;
-  };
+  }>;
 }
 
 export default async function Page({
   params,
 }: PageProps) {
-  const { slug } = params // Directly access slug from params (no need to await it)
-  
-  const filepath = `content/${slug}.md`
+  // Await the params since it's a Promise
+  const resolvedParams = await params;
+  const { slug } = resolvedParams;
 
+  const filepath = `content/${slug}.md`;
+
+  // Check if the file exists, and return a 404 page if not
   if (!fs.existsSync(filepath)) {
-    notFound()
-    return
+    notFound();
+    return;
   }
 
-  const fileContent = fs.readFileSync(filepath, "utf-8")
-  const { content, data } = matter(fileContent)
+  // Read the content of the markdown file
+  const fileContent = fs.readFileSync(filepath, "utf-8");
+  const { content, data } = matter(fileContent);
 
+  // Process the markdown content into HTML using unified and rehype
   const processor = unified()
     .use(remarkParse)
     .use(remarkRehype)
@@ -44,10 +50,11 @@ export default async function Page({
           feedbackDuration: 3_000,
         }),
       ],
-    })
+    });
 
-  const htmlContent = (await processor.process(content)).toString()
+  const htmlContent = (await processor.process(content)).toString();
 
+  // Return the JSX for the blog post page
   return (
     <div className="min-h-screen py-12 px-4 sm:px-6 lg:px-8">
       <div className="mx-auto max-w-4xl rounded-lg shadow-lg overflow-hidden dark:bg-gray-900">
@@ -68,5 +75,5 @@ export default async function Page({
         </div>
       </div>
     </div>
-  )
+  );
 }
