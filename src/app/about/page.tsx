@@ -15,14 +15,14 @@ const About = () => {
         />
         
         <div className="max-w-2xl text-center">
-          <h2 className="text-2xl font-semibold mb-4">Hi, I'm John Doe</h2>
+          <h2 className="text-2xl font-semibold mb-4">Hi, I&apos;m John Doe</h2>
           <p className=" mb-4">
-            I'm a passionate writer and developer sharing my thoughts on technology,
+            I&apos;m a passionate writer and developer sharing my thoughts on technology,
             coding, and life. Through this blog, I aim to share my experiences and
             insights while connecting with like-minded individuals.
           </p>
           <p >
-            When I'm not writing or coding, you can find me exploring new
+            When I&apos;m not writing or coding, you can find me exploring new
             technologies, reading books, or enjoying nature walks.
           </p>
         </div>

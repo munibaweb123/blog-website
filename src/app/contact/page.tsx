@@ -9,7 +9,7 @@ const Contact = () => {
           {/* Header */}
           <div className="px-6 py-8 border-b">
             <h1 className="text-3xl font-bold">Contact Us</h1>
-            <p className="mt-2">Have questions? We'd love to hear from you.</p>
+            <p className="mt-2">Have questions? We&apos;d love to hear from you.</p>
           </div>
 
           {/* Contact Form */}
