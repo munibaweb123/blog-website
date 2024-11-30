@@ -250,7 +250,7 @@ export default function Home() {
               src={post.image}
               alt={post.title}
               width={400}
-              height={250}
+              height={350}
               className="object-cover w-full h-48 rounded-t-lg"
             />
             <div className="flex flex-col flex-1 p-6">
