@@ -1,3 +1,4 @@
+"use client"
 import fs from "fs"
 import rehypeDocument from 'rehype-document'
 import rehypeFormat from 'rehype-format'
