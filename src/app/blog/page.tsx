@@ -44,9 +44,9 @@ const Blog = async () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Latest Blog Posts</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
         {blogPosts.map((post) => (
-          <div key={post.slug} className="bg-white rounded-lg shadow-lg overflow-hidden">
+          <div key={post.slug} className=" rounded-lg shadow-lg overflow-hidden dark:border-2 dark:bg-gray-900">
             <img 
               src={post.image} 
               alt={post.title} 
@@ -54,10 +54,10 @@ const Blog = async () => {
             />
             <div className="p-6">
               <h2 className="text-xl font-semibold mb-2">{post.title}</h2>
-              <div className="flex justify-between text-gray-600 text-sm mb-4">
+              <div className="flex justify-between text-sm mb-4">
                 <span>{post.author}</span>
               </div>
-              <p className="text-gray-700 mb-4">{post.description}</p>
+              <p className="mb-4">{post.description}</p>
               
               <Link href={`/blogpost/${post.slug}`} className={buttonVariants({ variant: "outline" })}>
                 Click here

@@ -50,3 +50,72 @@ What is TypeScript and why should we learn it? TypeScript is a superset of JavaS
 To install TypeScript, run this command in the command prompt:
 ```bash
 npm install -g typescript
+```
+### Variables in TypeScript
+
+```bash
+// String variable
+let name: string = "John";
+
+// Number variable
+const age: number = 25;
+
+// Boolean variable
+let isStudent: boolean = true;
+```
+
+### Arrays in TypeScript
+
+```bash
+// Number array
+let numbers: number[] = [1, 2, 3, 4, 5];
+
+// String array
+let fruits: Array<string> = ["apple", "banana", "orange"];
+```
+
+### Loops in TypeScript
+
+```bash
+// For loop
+for(let i = 0; i < 5; i++) {
+    console.log(i);
+}
+
+// While loop
+let count = 0;
+while(count < 5) {
+    console.log(count);
+    count++;
+}
+
+// ForEach loop with array
+let colors: string[] = ["red", "blue", "green"];
+colors.forEach(color => console.log(color));
+```
+
+### Conditional Statements
+```bash
+// If-else statement
+let score: number = 85;
+if(score >= 90) {
+    console.log("Excellent!");
+} else if(score >= 80) {
+    console.log("Good job!");
+} else {
+    console.log("Keep trying!");
+}
+
+// Switch statement
+let day: number = 1;
+switch(day) {
+    case 1:
+        console.log("Monday");
+        break;
+    case 2:
+        console.log("Tuesday");
+        break;
+    default:
+        console.log("Invalid day");
+}
+```
