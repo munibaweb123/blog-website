@@ -1,4 +1,4 @@
-// pages/api/getPost.ts
+// api/getPost/page.tsx
 import { NextApiRequest, NextApiResponse } from 'next'
 import fs from 'fs'
 import path from 'path'
