@@ -1,11 +1,10 @@
-import { buttonVariants } from "@/components/ui/button"
-import Link from 'next/link';
-import React from 'react';
-import fs from "fs/promises";
+import { buttonVariants } from "@/components/ui/button";
+import Link from "next/link";
 import path from "path";
-import matter from "gray-matter"
+import fs from "fs/promises";
+import matter from "gray-matter";
 
-// Define interface for blog post structure
+// BlogPost interface
 interface BlogPost {
   title: string;
   description: string;
@@ -14,27 +13,29 @@ interface BlogPost {
   slug: string;
 }
 
+// Fetch blog posts
 async function getBlogPosts(): Promise<BlogPost[]> {
-  const contentDir = path.join(process.cwd(), 'content');
+  const contentDir = path.join(process.cwd(), "content");
   const files = await fs.readdir(contentDir);
-  
+
   const posts = await Promise.all(
     files.map(async (file) => {
       const filePath = path.join(contentDir, file);
-      const fileContent = await fs.readFile(filePath, 'utf-8');
+      const fileContent = await fs.readFile(filePath, "utf-8");
       const { data } = matter(fileContent);
-      
-      // Ensure the data matches the BlogPost interface
+
+      const slug = file.replace(/\.md$/, ""); // Ensure slug is derived
+
       return {
         title: data.title,
         description: data.description,
         author: data.author,
         image: data.image,
-        slug: data.slug
+        slug,
       } as BlogPost;
     })
   );
-  
+
   return posts;
 }
 
@@ -44,12 +45,15 @@ const Blog = async () => {
   return (
     <div className="container mx-auto px-4 py-8">
       <h1 className="text-4xl font-bold text-center mb-8">Latest Blog Posts</h1>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8 ">
+      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
         {blogPosts.map((post) => (
-          <div key={post.slug} className=" rounded-lg shadow-lg overflow-hidden dark:border-2 dark:bg-gray-900">
-            <img 
-              src={post.image} 
-              alt={post.title} 
+          <div
+            key={post.slug}
+            className="rounded-lg shadow-lg overflow-hidden dark:border-2 dark:bg-gray-900"
+          >
+            <img
+              src={post.image}
+              alt={post.title}
               className="w-full h-60 object-cover"
             />
             <div className="p-6">
@@ -58,8 +62,10 @@ const Blog = async () => {
                 <span>{post.author}</span>
               </div>
               <p className="mb-4">{post.description}</p>
-              
-              <Link href={`/blogpost/${post.slug}`} className={buttonVariants({ variant: "outline" })}>
+              <Link
+                href={`/blogpost/${post.slug}`}
+                className={buttonVariants({ variant: "outline" })}
+              >
                 Click here
               </Link>
             </div>
@@ -67,7 +73,7 @@ const Blog = async () => {
         ))}
       </div>
     </div>
-  )
-}
+  );
+};
 
-export default Blog
+export default Blog;

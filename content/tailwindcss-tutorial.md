@@ -4,7 +4,7 @@ slug: tailwindcss-tutorial
 description: this is TailwindCSS tutorial and this is for learning TailwindCSS.
 date: 30/11/2024
 author: Muniba
-image: /blog/blog1.jpg
+image: /blog/blog2.jpg
 
 ---
 

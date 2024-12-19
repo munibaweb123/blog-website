@@ -4,7 +4,7 @@ slug: typescript-tutorial
 description: this is typescript tutorial and this is for learning typescript.
 date: 30/11/2024
 author: Muniba
-image: /blog/blog1.jpg
+image: /blog/blog3.jpg
 
 ---
 
